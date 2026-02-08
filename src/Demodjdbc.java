@@ -16,7 +16,8 @@ public class Demodjdbc {
         String url = "jdbc:postgresql://localhost:5432/demojavadb";
         String username = "postgres";
         String password = "kal123";
-        String sqlQuery = "SELECT * FROM students  WHERE \"Sid\" = 1";
+        String sqlQuery = "SELECT * FROM students";
+//        String sqlQuery = "SELECT * FROM students  WHERE \"Sid\" = 1";
 
         try {
 //        step 2
@@ -31,7 +32,11 @@ public class Demodjdbc {
 
 //            step 5 execute a statement
             ResultSet results = st.executeQuery(sqlQuery);
-            System.out.println(results.next());
+//            System.out.println(results.next());
+
+            while (results.next()) {
+                System.out.println(results.getInt(2));
+            }
 
             con.close();
             System.out.println("connection closed");
